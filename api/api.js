@@ -8,6 +8,7 @@ import * as actions from './actions/index';
 import PrettyError from 'pretty-error';
 import http from 'http';
 import SocketIo from 'socket.io';
+import faker from 'faker';
 
 const pretty = new PrettyError();
 const app = express();
@@ -105,3 +106,19 @@ if (config.apiPort) {
 } else {
   console.error('==>     ERROR: No PORT environment variable has been specified');
 }
+
+app.get('/api/data', function(req, res) {
+	var jsonData = {
+		users: [],
+	}
+	for (var i = 0; i < 2000; i++) {
+		newUser = {};
+		newUser.name = faker.name.findName();
+		newUser.hours = faker.random.number(30)
+		newUser.department = faker.name.jobArea()
+		newUser.locationOfWork = faker.company.companyName()
+		jsonData.users.push(newUser);
+	}
+	console.log (JSON.stringify(jsonData));
+	res.send(jsonData);
+})
