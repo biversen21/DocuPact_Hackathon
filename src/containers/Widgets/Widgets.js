@@ -56,19 +56,14 @@ class Widgets extends Component {
     return (
       <div className={styles.widgets + ' container'}>
         <h1>
-          Widgets
+          My Events
           <button className={styles.refreshBtn + ' btn btn-success'} onClick={load}><i
-            className={refreshClassName}/> {' '} Reload Widgets
+            className={refreshClassName}/> {' '} Reload Events
           </button>
         </h1>
-        <DocumentMeta title="React Redux Example: Widgets"/>
+        <DocumentMeta title="My Activity Feed"/>
         <p>
-          This data was loaded from the server before this route was rendered. If you hit refresh on your browser, the
-          data loading will take place on the server before the page is returned. If you navigated here from another
-          page, the data was fetched from the client.
-        </p>
-        <p>
-          This widgets are stored in your session, so feel free to edit it and refresh.
+        	Check out my awesome history of volunteering...Join me next time
         </p>
         {error &&
         <div className="alert alert-danger" role="alert">
@@ -81,9 +76,9 @@ class Widgets extends Component {
           <thead>
           <tr>
             <th className={styles.idCol}>ID</th>
-            <th className={styles.colorCol}>Color</th>
-            <th className={styles.sprocketsCol}>Sprockets</th>
-            <th className={styles.ownerCol}>Owner</th>
+            <th className={styles.colorCol}>Event Status</th>
+            <th className={styles.sprocketsCol}>Hours</th>
+            <th className={styles.ownerCol}>Company</th>
             <th className={styles.buttonCol}></th>
           </tr>
           </thead>

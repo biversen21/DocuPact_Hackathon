@@ -1,8 +1,8 @@
 const initialWidgets = [
-  {id: 1, color: 'Red', sprocketCount: 7, owner: 'John'},
-  {id: 2, color: 'Taupe', sprocketCount: 1, owner: 'George'},
-  {id: 3, color: 'Green', sprocketCount: 8, owner: 'Ringo'},
-  {id: 4, color: 'Blue', sprocketCount: 2, owner: 'Paul'}
+  {id: 1, color: 'Recurring Weekly', sprocketCount: 7, owner: 'ChildFund International'},
+  {id: 2, color: 'One-Time', sprocketCount: 1, owner: 'National Breast Cancer Coalition Fund'},
+  {id: 3, color: 'Recurring Monthly', sprocketCount: 8, owner: 'Children\'s Defense Fund'},
+  {id: 4, color: 'Closed', sprocketCount: 2, owner: 'Friends of Animals'}
 ];
 
 export function getWidgets(req) {

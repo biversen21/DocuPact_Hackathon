@@ -1,6 +1,6 @@
 import {createValidator, required, maxLength, integer, oneOf} from 'utils/validation';
 
-export const colors = ['Blue', 'Fuchsia', 'Green', 'Orange', 'Red', 'Taupe'];
+export const colors = ['One-Time', 'Recurring Monthly', 'Recurring Weekly', 'Closed'];
 
 const widgetValidation = createValidator({
   color: [required, oneOf(colors)],
