@@ -21,7 +21,7 @@ function asyncValidate(data) {
 
 @connectReduxForm({
   form: 'survey',
-  fields: ['name', 'email', 'occupation'],
+  fields: ['name', 'email', 'company', 'date'],
   validate: surveyValidation,
   asyncValidate,
   asyncBlurFields: ['email']
@@ -46,7 +46,7 @@ class SurveyForm extends Component {
     const {
       asyncValidating,
       dirty,
-      fields: {name, email, occupation},
+      fields: {name, email, company, date},
       active,
       handleSubmit,
       invalid,
@@ -74,9 +74,10 @@ class SurveyForm extends Component {
     return (
       <div>
         <form className="form-horizontal" onSubmit={handleSubmit}>
-          {renderInput(name, 'Full Name')}
-          {renderInput(email, 'Email', true)}
-          {renderInput(occupation, 'Occupation')}
+          {renderInput(name, 'Event Name')}
+          {renderInput(email, 'Organizer Email', true)}
+          {renderInput(company, 'Company')}
+          {renderInput(date, 'Date')}
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
               <button className="btn btn-success" onClick={handleSubmit}>
@@ -88,33 +89,6 @@ class SurveyForm extends Component {
             </div>
           </div>
         </form>
-
-        <h4>Props from redux-form</h4>
-
-        <table className="table table-striped">
-          <tbody>
-          <tr>
-            <th>Active Field</th>
-            <td>{active}</td>
-          </tr>
-          <tr>
-            <th>Dirty</th>
-            <td className={dirty ? 'success' : 'danger'}>{dirty ? 'true' : 'false'}</td>
-          </tr>
-          <tr>
-            <th>Pristine</th>
-            <td className={pristine ? 'success' : 'danger'}>{pristine ? 'true' : 'false'}</td>
-          </tr>
-          <tr>
-            <th>Valid</th>
-            <td className={valid ? 'success' : 'danger'}>{valid ? 'true' : 'false'}</td>
-          </tr>
-          <tr>
-            <th>Invalid</th>
-            <td className={invalid ? 'success' : 'danger'}>{invalid ? 'true' : 'false'}</td>
-          </tr>
-          </tbody>
-        </table>
       </div>
     );
   }

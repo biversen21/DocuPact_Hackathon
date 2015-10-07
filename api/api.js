@@ -107,22 +107,33 @@ if (config.apiPort) {
   console.error('==>     ERROR: No PORT environment variable has been specified');
 }
 
-app.get('/api/data', function(req, res) {
-	var companies = ['American Foundation for Children with AIDS','Friends of Animals','Humane Farming Association','Glaucoma Foundation','Guide Dog Foundation for the Blind','National Breast Cancer Coalition Fund','Childrens Defense Fund','American Humane Association','ChildFund International','World Vision','American Rivers','Environmental Defense Fund']
-	var departments = ['QA','Engineering','Marketing','Sales','HR','Finance']
-	var jsonData = {
-		users: [],
-	}
-	for (var i = 0; i < 2000; i++) {
-		newUser = {};
-		companyId = faker.random.number(12);
-		deptId = faker.random.number(6);
-		newUser.name = faker.name.findName();
-		newUser.hours = faker.random.number(30);
-		newUser.department = departments[deptId];
-		newUser.locationOfWork = companies[companyId];
-		jsonData.users.push(newUser);
-	}
-	console.log (JSON.stringify(jsonData));
-	res.send(jsonData);
+var eventList = [];
+
+app.post('/api/events', function(req, res) {
+  newEvent = req.newEvent
+  eventList.push(newEvent)
+})
+
+app.get('/api/events', function(req, res) {
+  res.json(eventList);
+})
+
+app.get('/api/users', function(req, res) {
+  var companies = ['American Foundation for Children with AIDS','Friends of Animals','Humane Farming Association','Glaucoma Foundation','Guide Dog Foundation for the Blind','National Breast Cancer Coalition Fund','Childrens Defense Fund','American Humane Association','ChildFund International','World Vision','American Rivers','Environmental Defense Fund']
+  var departments = ['QA','Engineering','Marketing','Sales','HR','Finance']
+  var jsonData = {
+    users: [],
+  }
+  for (var i = 0; i < 2000; i++) {
+    newUser = {};
+    companyId = faker.random.number(12);
+    deptId = faker.random.number(6);
+    newUser.name = faker.name.findName();
+    newUser.hours = faker.random.number(30);
+    newUser.department = departments[deptId];
+    newUser.locationOfWork = companies[companyId];
+    jsonData.users.push(newUser);
+  }
+  console.log (JSON.stringify(jsonData));
+  res.send(jsonData);
 })
